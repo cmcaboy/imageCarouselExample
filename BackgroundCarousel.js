@@ -2,7 +2,6 @@ import * as React from "react";
 import { StyleSheet, View, ScrollView, Dimensions, Image } from "react-native";
 
 const DEVICE_WIDTH = Dimensions.get("window").width;
-const AUTO_SWIPE_INTERVAL = 3000;
 
 class BackgroundCarousel extends React.Component {
   scrollRef = React.createRef();
@@ -32,16 +31,8 @@ class BackgroundCarousel extends React.Component {
           });
         }
       );
-    }, AUTO_SWIPE_INTERVAL);
+    }, 3000);
   };
-
-  nextImage = () =>
-    this.setState(prev => ({
-      selectedIndex:
-        prev.selectedIndex === this.props.images.length - 1
-          ? 0
-          : prev.selectedIndex + 1
-    }));
 
   setSelectedIndex = event => {
     const contentOffset = event.nativeEvent.contentOffset;
